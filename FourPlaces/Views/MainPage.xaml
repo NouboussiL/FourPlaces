@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<forms:BaseContentPage 
+    xmlns:forms="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="FourPlaces.Views.MainPage"
+    Title="FourPlaces">
+
+    <StackLayout HorizontalOptions="Center">
+        <Label TextColor="Black" FontSize="Large" Text="FourPlaces" HorizontalOptions="Center" Margin="60"/>
+        <Label Text="Identifiant : " HorizontalOptions="Center"/>
+        <Entry Text="{Binding Identifiant}"/>
+
+        <Label Text="Mot de Passe : " HorizontalOptions="Center"/>
+        <Entry IsPassword="True" Text="{Binding Mdp}"/>
+
+        <Label Text="{Binding Erreur}" TextColor="Red"/>
+
+        <Button
+            Text="Connexion"
+            BackgroundColor="White"
+            BorderRadius="10"
+            BorderWidth="2"
+            BorderColor="Black"
+            HorizontalOptions="Center"
+            Command="{Binding GoToPlaceListLogged}"/>
+
+        <Button
+            Text="Inscription"
+            BackgroundColor="White"
+            BorderRadius="10"
+            BorderWidth="2"
+            BorderColor="Black"
+            HorizontalOptions="Center"
+            Command="{Binding Register}"/>
+
+        <Button
+            Text="Continuer sans se connecter"
+            BackgroundColor="White"
+            BorderRadius="10"
+            BorderWidth="2"
+            BorderColor="Black"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Command="{Binding GoToPlaceList}"/>
+    </StackLayout>
+
+</forms:BaseContentPage>

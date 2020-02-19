@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<forms:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+             xmlns:local="clr-namespace:FourPlaces.Models"
+             mc:Ignorable="d"
+             x:Class="FourPlaces.Views.PlaceListPage"
+             Title="Liste des lieux">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label TextColor="Black" FontSize="small" Text="Retrouvez les lieux préférés de la communauté. Visitez, Commentez ou ajoutez-en de nouveaux !" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="5"/>
+            <StackLayout Orientation="Horizontal">
+                <Button
+                    x:Name="addPlace"
+                    VerticalOptions="Center"
+                    Text="Ajouter"
+                    Command="{Binding AddPlaceCommand}"
+                    BackgroundColor="White"
+                    BorderRadius="10"
+                    BorderWidth="2"
+                    BorderColor="Black"/>
+                <Button
+                    x:Name="profileButton"
+                    VerticalOptions="Center"
+                    Text="Profil"
+                    Command="{Binding ViewProfileCommand}"
+                    BackgroundColor="White"
+                    BorderRadius="10"
+                    BorderWidth="2"
+                    BorderColor="Black"/>
+            </StackLayout>
+
+            <ListView x:Name="Places"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Places}"
+                      SelectedItem="{Binding SelectedPlace}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:PlaceItemSummary">
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="4"
+                                HasShadow="True"
+                                Margin="4,4,4,4"
+                                Padding="8,4,8,4"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Start">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Start"
+                                    Orientation="Horizontal">
+                                    <StackLayout 
+                                        Orientation="Vertical"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center">
+                                        <Image Source="{Binding ImageId, StringFormat='https://td-api.julienmialon.com/images/{0:F0}'}"/>
+                                        <Label
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            LineBreakMode="WordWrap"
+                                            FontSize="10"/>
+                                        <Label
+                                            Text="{Binding Description}"
+                                            TextColor="Black"
+                                            FontSize="10"
+                                            LineBreakMode="WordWrap"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</forms:BaseContentPage>

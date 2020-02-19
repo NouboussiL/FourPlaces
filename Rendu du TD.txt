@@ -1,0 +1,4 @@
+Numéro d'étudiant : 2165770
+
+Presque toutes les fonctionnalités n'ont pas été implémentées dû à un problème avec la méthode sendAsync de la classe ApiClient
+La connexion est possible mais je n'ai pas pu récupérer la liste des lieux.
